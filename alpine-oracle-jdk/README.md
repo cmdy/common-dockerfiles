@@ -1,2 +1,2 @@
 # jdk信息
-server-jar-8u152
+server-jre-8u152
