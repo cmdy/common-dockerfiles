@@ -1,6 +1,6 @@
 FROM cmdy/alpine-oracle-jdk:8u152 
 
-MAINTAINER  zhanglin_csd@si-tech.com.cn
+MAINTAINER  cmdy<zhang_lin66@foxmail.com>
 
 ENV TOMCAT_MAJOR 7
 ENV TOMCAT_VERSION 7.0.82
@@ -15,6 +15,7 @@ ENV TOMCAT_TGZ_URL http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-${TO
 RUN apk add --no-cache --virtual .build-deps \
         ca-certificates \
         tar \
+        unzip \
         wget \
         openssl \
         openssl-dev \
