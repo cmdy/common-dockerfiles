@@ -4,6 +4,7 @@ MAINTAINER  zhanglin_csd@si-tech.com.cn
 
 ENV TOMCAT_MAJOR 7
 ENV TOMCAT_VERSION 7.0.82
+ENV JAVA_HOME /usr/local/cmdy/server-jre-8
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 ENV TOMCAT_NATIVE_LIBDIR $CATALINA_HOME/native-jni-lib
