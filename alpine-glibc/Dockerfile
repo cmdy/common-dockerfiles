@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM cmdy/alpine:3.6
 MAINTAINER zhang_lin66@foxmail.com
 
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
