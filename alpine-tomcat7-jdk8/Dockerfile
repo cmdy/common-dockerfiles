@@ -1,5 +1,6 @@
 FROM cmdy/alpine-oracle-jdk:8u152 
 
+MAINTAINER  zhanglin_csd@si-tech.com.cn
 
 ENV TOMCAT_MAJOR 7
 ENV TOMCAT_VERSION 7.0.82
