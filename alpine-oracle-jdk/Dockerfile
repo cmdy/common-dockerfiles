@@ -3,8 +3,8 @@ MAINTAINER zhang_lin66@foxmail.com
 
 ENV CMDY_DIR="/usr/local/cmdy" \
     JAVA_VERSION=8 \
-    JAVA_UPDATE=102 \
-    JAVA_BUILD=14 \
+    JAVA_UPDATE=152 \
+    JAVA_BUILD=16 \
     JAVA_TYPE="server-jre"
 
 # Install wget & ca-certs so we can download the server JRE
