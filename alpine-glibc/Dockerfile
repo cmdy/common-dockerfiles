@@ -1,5 +1,5 @@
 FROM cmdy/alpine:3.6
-MAINTAINER zhang_lin66@foxmail.com
+MAINTAINER cmdy<zhang_lin66@foxmail.com>
 
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
     ALPINE_GLIBC_PACKAGE_VERSION="2.23-r3" && \
