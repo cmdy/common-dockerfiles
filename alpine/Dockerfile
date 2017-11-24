@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-MAINTAINER zhang_lin66@foxmail.com
+MAINTAINER cmdy<zhang_lin66@foxmail.com>
 
 ARG TZ="Asia/Shanghai"
 
