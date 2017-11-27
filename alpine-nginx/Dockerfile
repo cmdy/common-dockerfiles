@@ -72,8 +72,8 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
         git \
     && curl -fSL http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz -o nginx.tar.gz \
     && curl -fSL http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz.asc  -o nginx.tar.gz.asc \
-    && git clone https://github.com/cuber/ngx_http_google_filter_module /usr/src/ngx_http_google_filter_module \
-    && git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module /usr/src/ngx_http_substitutions_filter_module \
+    #&& git clone https://github.com/cuber/ngx_http_google_filter_module /usr/src/ngx_http_google_filter_module \
+    #&& git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module /usr/src/ngx_http_substitutions_filter_module \
     && export GNUPGHOME="$(mktemp -d)" \
     #&& gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPG_KEYS" \
     #&& gpg --batch --verify nginx.tar.gz.asc nginx.tar.gz \
@@ -108,8 +108,8 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
     && strip /usr/sbin/nginx* \
     && strip /usr/lib/nginx/modules/*.so \
     && rm -rf /usr/src/nginx-$NGINX_VERSION \
-    && rm -rf /usr/src/ngx_http_google_filter_module \
-    && rm -rf /usr/src/ngx_http_substitutions_filter_module \
+    #&& rm -rf /usr/src/ngx_http_google_filter_module \
+    #&& rm -rf /usr/src/ngx_http_substitutions_filter_module \
     \
     # Bring in gettext so we can get `envsubst`, then throw
     # the rest away. To do this, we need to install `gettext`
