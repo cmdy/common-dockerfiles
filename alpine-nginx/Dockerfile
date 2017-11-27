@@ -75,8 +75,8 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
     && git clone https://github.com/cuber/ngx_http_google_filter_module /usr/src/ngx_http_google_filter_module \
     && git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module /usr/src/ngx_http_substitutions_filter_module \
     && export GNUPGHOME="$(mktemp -d)" \
-    && gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPG_KEYS" \
-    && gpg --batch --verify nginx.tar.gz.asc nginx.tar.gz \
+    #&& gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPG_KEYS" \
+    #&& gpg --batch --verify nginx.tar.gz.asc nginx.tar.gz \
     && rm -r "$GNUPGHOME" nginx.tar.gz.asc \
     && mkdir -p /usr/src \
     && tar -zxC /usr/src -f nginx.tar.gz \
