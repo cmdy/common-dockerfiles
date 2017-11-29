@@ -1,4 +1,5 @@
-FROM cmdy/alpine:3.6
+#FROM cmdy/alpine:3.6
+FROM cmdy/alpine-glibc:2.23-r3
 
 MAINTAINER cmdy<zhang_lin66@foxmail.com>
 
