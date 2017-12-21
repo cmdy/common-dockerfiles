@@ -1,4 +1,4 @@
-FROM cmdy/alpine-oracle-jdk:8u152 
+FROM cmdy/alpine-oracle-jdk:jre-8u152
 
 MAINTAINER  cmdy<zhang_lin66@foxmail.com>
 
