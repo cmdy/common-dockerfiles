@@ -5,7 +5,7 @@ ENV CMDY_DIR="/usr/local/cmdy" \
     JAVA_VERSION=8 \
     JAVA_UPDATE=152 \
     JAVA_BUILD=16 \
-    JAVA_TYPE="jre" \
+    JAVA_TYPE="jdk" \
     JAVA_STR="aa0333dd3019491ca4f6ddbe78cdb6d0"
 
 # Install wget & ca-certs so we can download the server JRE
@@ -17,7 +17,7 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates && \
     wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
         "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_STR}/${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
     tar -xzf "${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
-    ln -s "${CMDY_DIR}/jre1.${JAVA_VERSION}.0_${JAVA_UPDATE}"  "${CMDY_DIR}/jre-${JAVA_VERSION}" && \
+    ln -s "${CMDY_DIR}/jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}"  "${CMDY_DIR}/jdk-${JAVA_VERSION}" && \
     apk del build-dependencies && \
     # Remove the tar.gz
     rm -f "${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
