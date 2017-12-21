@@ -32,7 +32,6 @@ RUN apk add --no-cache --virtual .build-deps \
         gcc \
         libc-dev \
         make \
-        build-dependencies \
         #server-jre
     && mkdir -p "${CMDY_DIR}" \
     && cd "${CMDY_DIR}"  \
@@ -86,7 +85,6 @@ RUN apk add --no-cache --virtual .build-deps \
        "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_STR}/${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
     && tar -xzf "${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
     && ln -s "${CMDY_DIR}/jre1.${JAVA_VERSION}.0_${JAVA_UPDATE}"  "${CMDY_DIR}/jre-${JAVA_VERSION}" \
-    && apk del build-dependencies \
     && rm -f "${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
     && cd "${CMDY_DIR}/${JAVA_TYPE}-${JAVA_VERSION}" \
     && rm -Rf \
