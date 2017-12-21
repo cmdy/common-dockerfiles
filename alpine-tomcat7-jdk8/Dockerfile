@@ -2,8 +2,8 @@ FROM cmdy/alpine-oracle-jdk:8u152
 
 MAINTAINER  cmdy<zhang_lin66@foxmail.com>
 
-ENV TOMCAT_MAJOR 7
-ENV TOMCAT_VERSION 7.0.82
+ENV TOMCAT_MAJOR 8
+ENV TOMCAT_VERSION 8.0.48
 ENV JAVA_HOME /usr/local/cmdy/server-jre-8
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
