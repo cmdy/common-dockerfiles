@@ -71,7 +71,6 @@ RUN apk add --no-cache --virtual .build-deps \
            echo >&2 ${nativeLines}; \
            exit 1; \
        fi \
-    && apk del .build-deps \
     && rm -rf   ${CATALINA_HOME}/bin/*.bat \
                 ${CATALINA_HOME}/bin/tomcat-native.tar.gz \
                 ${CATALINA_HOME}/webapps/* \
@@ -85,6 +84,7 @@ RUN apk add --no-cache --virtual .build-deps \
        "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_STR}/${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
     && tar -xzf "${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
     && ln -s "${CMDY_DIR}/jre1.${JAVA_VERSION}.0_${JAVA_UPDATE}"  "${CMDY_DIR}/jre-${JAVA_VERSION}" \
+    && apk del .build-deps \
     && rm -f "${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
     && cd "${CMDY_DIR}/${JAVA_TYPE}-${JAVA_VERSION}" \
     && rm -Rf \
