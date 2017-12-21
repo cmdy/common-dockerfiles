@@ -1,1 +1,1 @@
-> tomcat 7.0.82  jdk 8u152
+> tomcat 8.0.48  jdk 8u152
