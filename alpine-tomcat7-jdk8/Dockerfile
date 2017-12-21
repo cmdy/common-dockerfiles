@@ -4,7 +4,7 @@ MAINTAINER  cmdy<zhang_lin66@foxmail.com>
 
 ENV TOMCAT_MAJOR 8
 ENV TOMCAT_VERSION 8.0.48
-ENV JAVA_HOME /usr/local/cmdy/server-jre-8
+ENV JAVA_HOME /usr/local/cmdy/jre-8
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 ENV TOMCAT_NATIVE_LIBDIR $CATALINA_HOME/native-jni-lib
