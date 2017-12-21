@@ -96,7 +96,8 @@ RUN apk add --no-cache --virtual .build-deps \
        release \
        src.zip \
        man/
-    
+
+ENV JAVA_HOME /usr/local/cmdy/jre-8
 ENV PATH="${CMDY_DIR}/${JAVA_TYPE}-${JAVA_VERSION}/bin:${PATH}"    
 
 EXPOSE 8080
