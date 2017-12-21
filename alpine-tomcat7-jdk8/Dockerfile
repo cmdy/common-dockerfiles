@@ -1,10 +1,17 @@
-FROM cmdy/alpine-oracle-jdk:jdk-8u152
+FROM cmdy/alpine-glibc:2.23-r3
 
 MAINTAINER  cmdy<zhang_lin66@foxmail.com>
 
+ENV CMDY_DIR="/usr/local/cmdy" \
+    JAVA_VERSION=8 \
+    JAVA_UPDATE=152 \
+    JAVA_BUILD=16 \
+    JAVA_TYPE="server-jre" \
+    JAVA_STR="aa0333dd3019491ca4f6ddbe78cdb6d0"
+
 ENV TOMCAT_MAJOR 8
 ENV TOMCAT_VERSION 8.0.48
-ENV JAVA_HOME /usr/local/cmdy/jre-8
+ENV JAVA_HOME /usr/local/cmdy/server-jre-8
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 ENV TOMCAT_NATIVE_LIBDIR $CATALINA_HOME/native-jni-lib
@@ -25,6 +32,15 @@ RUN apk add --no-cache --virtual .build-deps \
         gcc \
         libc-dev \
         make \
+        build-dependencies \
+        #server-jre
+    && mkdir -p "${CMDY_DIR}" \
+    && cd "${CMDY_DIR}"  \
+    && wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
+       "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_STR}/${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
+    && tar -xzf "${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
+    && ln -s "${CMDY_DIR}/jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}"  "${CMDY_DIR}/server-jre-${JAVA_VERSION}" \
+    #tomcat8
     && mkdir -p ${CATALINA_HOME} \
     && wget -O tomcat.tar.gz ${TOMCAT_TGZ_URL} \
     && tar -xvf tomcat.tar.gz -C ${CATALINA_HOME} --strip-components=1 \
@@ -60,8 +76,30 @@ RUN apk add --no-cache --virtual .build-deps \
     && rm -rf   ${CATALINA_HOME}/bin/*.bat \
                 ${CATALINA_HOME}/bin/tomcat-native.tar.gz \
                 ${CATALINA_HOME}/webapps/* \
-                tomcat.tar.gz 
+                tomcat.tar.gz \
+    #jre-8
+    && rm -rf ${CMDY_DIR} \
+    && export JAVA_TYPE=jre \
+    && mkdir -p "${CMDY_DIR}" \
+    && cd "${CMDY_DIR}"  \
+    && wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
+       "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_STR}/${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
+    && tar -xzf "${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
+    && ln -s "${CMDY_DIR}/jre1.${JAVA_VERSION}.0_${JAVA_UPDATE}"  "${CMDY_DIR}/jre-${JAVA_VERSION}" \
+    && apk del build-dependencies \
+    && rm -f "${JAVA_TYPE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" \
+    && cd "${CMDY_DIR}/${JAVA_TYPE}-${JAVA_VERSION}" \
+    && rm -Rf \
+       COPYRIGHT \
+       LICENSE \
+       README.html \
+       THIRDPARTYLICENSEREADME-JAVAFX.txt \
+       THIRDPARTYLICENSEREADME.txt \
+       release \
+       src.zip \
+       man/
     
+ENV PATH="${CMDY_DIR}/${JAVA_TYPE}-${JAVA_VERSION}/bin:${PATH}"    
 
 EXPOSE 8080
 
