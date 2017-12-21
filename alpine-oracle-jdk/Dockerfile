@@ -5,7 +5,7 @@ ENV CMDY_DIR="/usr/local/cmdy" \
     JAVA_VERSION=8 \
     JAVA_UPDATE=152 \
     JAVA_BUILD=16 \
-    JAVA_TYPE="server-jre" \
+    JAVA_TYPE="jre" \
     JAVA_STR="aa0333dd3019491ca4f6ddbe78cdb6d0"
 
 # Install wget & ca-certs so we can download the server JRE
